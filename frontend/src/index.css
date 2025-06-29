@@ -21,8 +21,8 @@
 }
 
 .header h1 {
-  color: #F71111;
-  margin-bottom: .5rem;
+  color: #f71111;
+  margin-bottom: 0.5rem;
 }
 
 .bgOverlay {
@@ -33,10 +33,41 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: .25;
+  opacity: 0.25;
   z-index: -1;
 }
 
 .container {
   width: 80%;
+}
+
+.navbar {
+  text-transform: uppercase;
+  padding: 2rem;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar li {
+  margin-left: 3rem;
+  list-style: none;
+}
+
+.navbar a {
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar a:visited {
+  color: black;
+}
+
+.navbar a:active {
+  font-weight: 700;
+  color: #f71111;
+  border-bottom: 3px solid #b7b7b7;
 }
