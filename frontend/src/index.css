@@ -71,3 +71,37 @@
   color: #f71111;
   border-bottom: 3px solid #b7b7b7;
 }
+
+#main-section {
+  display: flex;
+}
+
+#sidebar {
+  padding: 0 3rem;
+  max-width: 300px;
+  color: #888888;
+}
+
+.search {
+  width: 100%;
+  margin: 0 1rem 1rem 1rem;
+}
+
+.search input {
+  padding: 0.5rem;
+  border: 1px solid #888888;
+  border-radius: 5px;
+  margin: .25rem auto 0 auto
+}
+
+.input-row {
+  margin: 1rem;
+}
+
+.input-row input {
+  margin-right: .5rem
+}
+
+hr {
+  border-top: 1px solid rgba(211, 211, 211, 0.39);
+}
