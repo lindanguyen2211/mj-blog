@@ -1,0 +1,13 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  /*   resets font on everything -> need to set font-weight, font-size */
+  font-family: inherit;
+  font-size: inherit;
+}
