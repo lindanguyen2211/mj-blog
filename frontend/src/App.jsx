@@ -1,6 +1,5 @@
-import Header from "./components/Header"
-import Navbar from "./components/Navbar"
-import Sidebar from "./components/Sidebar"
+import Articles from "./components/Articles";
+import FeaturedArticle from "./components/FeaturedArticle";
 
 function App() {
 
