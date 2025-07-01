@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Home from "./views/Home";
 import Webinars from "./components/Webinars";
+import WebinarPlayer from "./components/WebinarPlayer";
 import UserManual from "./components/UserManual";
 import Blog4D from "./components/Blog4D";
 import Tutorials from "./components/Tutorials";
@@ -21,6 +22,7 @@ function App() {
             <Route path="/articles" element={<Home />} />
             <Route path="/pdf/:pdfName" element={<PdfViewer />} />
             <Route path="/webinars" element={<Webinars />} />
+            <Route path="/webinar/:webinarId" element={<WebinarPlayer />} />
             <Route path="/user-manual" element={<UserManual />} />
             <Route path="/4d-blog" element={<Blog4D />} />
             <Route path="/tutorials" element={<Tutorials />} />
