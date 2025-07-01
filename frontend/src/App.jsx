@@ -19,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/articles" element={<Home />} />
+            <Route path="/pdf/:pdfName" element={<PdfViewer />} />
             <Route path="/webinars" element={<Webinars />} />
             <Route path="/user-manual" element={<UserManual />} />
             <Route path="/4d-blog" element={<Blog4D />} />
