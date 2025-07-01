@@ -4,6 +4,10 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Home from "./views/Home";
 import Webinars from "./components/Webinars";
+import UserManual from "./components/UserManual";
+import Blog4D from "./components/Blog4D";
+import Tutorials from "./components/Tutorials";
+import PdfViewer from "./components/PdfViewer";
 
 function App() {
   return (
@@ -15,6 +19,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/articles" element={<Home />} />
+            <Route path="/webinars" element={<Webinars />} />
+            <Route path="/user-manual" element={<UserManual />} />
+            <Route path="/4d-blog" element={<Blog4D />} />
+            <Route path="/tutorials" element={<Tutorials />} />
+          </Routes>
         </div>
       </div>
     </Router>
