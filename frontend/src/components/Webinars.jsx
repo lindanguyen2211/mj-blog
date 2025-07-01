@@ -1,27 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import thumbnail1 from '../assets/thumbnail1.jpg'
-import thumbnail2 from '../assets/thumbnail2.jpg'
+import webinar1Thumbnail from '../assets/thumbnail1.jpg';
+import webinar2Thumbnail from '../assets/thumbnail2.jpg';
+import webinar3Thumbnail from '../assets/thumbnail3.jpg';
 
 const Webinars = () => {
   const webinars = [
     {
-      id: 'Modjaw-Demonstrational-Procedure ',
-      title: 'Modjaw Demonstrational Procedure ',
+      id: 'digital-dentistry-revolution',
+      title: 'Digital Dentistry Revolution',
       description: 'Discover how MODJAW is transforming digital dentistry workflows',
       date: 'July 15, 2025',
       duration: '32 min',
-      thumbnail: thumbnail1,
-      vimeoId: '1043708554'
+      thumbnail: webinar1Thumbnail,
+      videoType: 'vimeo',
+      videoId: '1043708554'
     },
     {
-      id: 'Modjaw-Webinar-with-Simon-Ghosh',
-      title: 'Modjaw Webinar with Simon Ghosh',
-      description: 'Modjaw Webinar with Simon Ghosh',
+      id: 'advanced-4d-imaging',
+      title: 'Advanced 4D Imaging Techniques',
+      description: 'Master the latest 4D imaging protocols with MODJAW technology',
       date: 'July 22, 2025',
       duration: '28 min',
-      thumbnail: thumbnail2,
-      vimeoId: '775896888'
+      thumbnail: webinar2Thumbnail,
+      videoType: 'vimeo',
+      videoId: '775896888'
+    },
+    {
+      id: 'dynamic-virtual-patient',
+      title: 'The Dynamic Virtual Patient',
+      description: 'Learn how to create and utilize dynamic virtual patients in your practice',
+      date: 'July 29, 2025',
+      duration: '2 min',
+      thumbnail: webinar3Thumbnail,
+      videoType: 'youtube',
+      videoId: 'CfgGSR_qwhI'
     }
   ];
 
@@ -32,7 +45,11 @@ const Webinars = () => {
         {webinars.map((webinar) => (
           <Link 
             to={`/webinar/${webinar.id}`}
-            state={{ vimeoId: webinar.vimeoId, title: webinar.title }}
+            state={{ 
+              videoType: webinar.videoType,
+              videoId: webinar.videoId,
+              title: webinar.title 
+            }}
             key={webinar.id}
             className="webinar-link"
           >
@@ -40,6 +57,9 @@ const Webinars = () => {
               <div className="webinar-thumbnail">
                 <img src={webinar.thumbnail} alt={webinar.title} />
                 <div className="duration-badge">{webinar.duration}</div>
+                <div className={`platform-badge ${webinar.videoType}`}>
+                  {webinar.videoType === 'youtube' ? 'YouTube' : 'Vimeo'}
+                </div>
               </div>
               <div className="webinar-content">
                 <h3>{webinar.title}</h3>

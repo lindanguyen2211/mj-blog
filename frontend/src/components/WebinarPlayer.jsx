@@ -1,28 +1,69 @@
 import React from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 
 const WebinarPlayer = () => {
   const { webinarId } = useParams();
   const location = useLocation();
-  const { vimeoId, title } = location.state || {};
+  const { videoType, videoId, title } = location.state || {};
 
-  // Fallback data in case state isn't passed
+  // Fallback data with updated title
   const webinarDetails = {
     'digital-dentistry-revolution': {
-      vimeoId: '1043708554',
-      title: 'Digital Dentistry Revolution'
+      videoType: 'vimeo',
+      videoId: '1043708554',
+      title: 'Digital Dentistry Revolution',
+      description: 'This webinar explores the groundbreaking changes MODJAW technology brings to digital dentistry.'
     },
     'advanced-4d-imaging': {
-      vimeoId: '775896888',
-      title: 'Advanced 4D Imaging Techniques'
+      videoType: 'vimeo',
+      videoId: '775896888',
+      title: 'Advanced 4D Imaging Techniques',
+      description: 'Learn advanced techniques for capturing and utilizing 4D imaging data.'
+    },
+    'dynamic-virtual-patient': {
+      videoType: 'youtube',
+      videoId: 'CfgGSR_qwhI',
+      title: 'The Dynamic Virtual Patient',
+      description: 'Discover how to create and work with dynamic virtual patients using MODJAW technology.'
     }
   };
 
-  const currentWebinar = vimeoId 
-    ? { vimeoId, title } 
-    : webinarDetails[webinarId];
+  // Get current webinar data with proper fallbacks
+  const getCurrentWebinar = () => {
+    // If state was passed, use it with fallback to webinarDetails
+    if (videoId) {
+      return {
+        ...(webinarDetails[webinarId] || {}),
+        videoType,
+        videoId,
+        title: title || (webinarDetails[webinarId]?.title || 'Webinar')
+      };
+    }
+    
+    // If no state but webinarId exists in details
+    if (webinarDetails[webinarId]) {
+      return webinarDetails[webinarId];
+    }
+    
+    // If no valid webinar found
+    return null;
+  };
+
+  const currentWebinar = getCurrentWebinar();
+
+  // Redirect to webinars page if no valid webinar found
+  if (!currentWebinar) {
+    return <Navigate to="/webinars" replace />;
+  }
+
+  const getEmbedUrl = () => {
+    if (currentWebinar.videoType === 'youtube') {
+      return `https://www.youtube.com/embed/${currentWebinar.videoId}?autoplay=1`;
+    }
+    return `https://player.vimeo.com/video/${currentWebinar.videoId}?autoplay=1`;
+  };
 
   return (
     <div className="webinar-player-container">
@@ -32,23 +73,19 @@ const WebinarPlayer = () => {
       
       <h1>{currentWebinar.title}</h1>
       
-      <div className="video-container">
+      <div className={`video-container ${currentWebinar.videoType}`}>
         <iframe 
-          src={`https://player.vimeo.com/video/${currentWebinar.vimeoId}?autoplay=1`}
+          src={getEmbedUrl()}
           title={currentWebinar.title}
           frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
+          allow={`accelerometer; ${currentWebinar.videoType === 'youtube' ? 'autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' : 'fullscreen; picture-in-picture'}`}
           allowFullScreen
         ></iframe>
       </div>
       
       <div className="webinar-details">
         <h2>About This Webinar</h2>
-        <p>
-          {currentWebinar.title === 'Digital Dentistry Revolution' 
-            ? 'This webinar explores the groundbreaking changes MODJAW technology brings to digital dentistry, covering workflow optimizations and clinical benefits.'
-            : 'Learn advanced techniques for capturing and utilizing 4D imaging data to enhance diagnosis and treatment planning in your practice.'}
-        </p>
+        <p>{currentWebinar.description}</p>
       </div>
     </div>
   );
