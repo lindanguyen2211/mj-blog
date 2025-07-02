@@ -25,7 +25,6 @@ function App() {
             <Route path="/pdf/:pdfName" element={<PdfViewer />} />
             <Route path="/webinars" element={<Videos category="webinar" />} />
             <Route path="/webinar/:videoId" element={<WebinarPlayer />} />
-            <Route path="/user-manual" element={<UserManual />} />
             <Route path="/4d-blog" element={<Blog4D />} />
             <Route path="/tutorials" element={<Videos category="tutorials" />} />
             <Route path="/tutorials/:videoId" element={<WebinarPlayer />} />
