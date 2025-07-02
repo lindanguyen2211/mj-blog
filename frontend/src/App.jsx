@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Home from "./views/Home";
-import Webinars from "./components/Webinars";
 import WebinarPlayer from "./components/WebinarPlayer";
 import UserManual from "./components/UserManual";
 import Blog4D from "./components/Blog4D";
 import Tutorials from "./components/Tutorials";
 import PdfViewer from "./components/PdfViewer";
+import Videos from "./components/Videos";
 
 function App() {
   return (
@@ -21,11 +21,12 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/articles" element={<Home />} />
             <Route path="/pdf/:pdfName" element={<PdfViewer />} />
-            <Route path="/webinars" element={<Webinars />} />
-            <Route path="/webinar/:webinarId" element={<WebinarPlayer />} />
+            <Route path="/webinars" element={<Videos category="webinar" />} />
+            <Route path="/webinar/:videoId" element={<WebinarPlayer />} />
             <Route path="/user-manual" element={<UserManual />} />
             <Route path="/4d-blog" element={<Blog4D />} />
-            <Route path="/tutorials" element={<Tutorials />} />
+            <Route path="/tutorials" element={<Videos category="tutorials" />} />
+            <Route path="/tutorials/:videoId" element={<WebinarPlayer />} />
           </Routes>
         </div>
       </div>
