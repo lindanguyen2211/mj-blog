@@ -8,6 +8,8 @@ const Navbar = () => {
         <li><NavLink to="/user-manual" className={({ isActive }) => isActive ? 'active-link' : ''}>User Manual</NavLink></li>
         <li><NavLink to="/4d-blog" className={({ isActive }) => isActive ? 'active-link' : ''}>4D Blog</NavLink></li>
         <li><NavLink to="/tutorials" className={({ isActive }) => isActive ? 'active-link' : ''}>Tutorials</NavLink></li>
+        <li><NavLink to="/testimonials" className={({ isActive }) => isActive ? 'active-link' : ''}>Testimonials</NavLink></li>
+        <li><NavLink to="/employee-resources" className={({ isActive }) => isActive ? 'active-link' : ''}>Employee Resources</NavLink></li>
         </ul>
     </nav>
   )

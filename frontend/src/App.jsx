@@ -9,6 +9,8 @@ import Blog4D from "./components/Blog4D";
 import Tutorials from "./components/Tutorials";
 import PdfViewer from "./components/PdfViewer";
 import Videos from "./components/Videos";
+import Testimonials from "./views/Testimonials";
+import EmployeeResources from "./views/EmployeeResources";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
             <Route path="/4d-blog" element={<Blog4D />} />
             <Route path="/tutorials" element={<Videos category="tutorials" />} />
             <Route path="/tutorials/:videoId" element={<WebinarPlayer />} />
+            <Route path="/testimonials" element={<Testimonials />} />
+            <Route path="/employee-resources" element={<EmployeeResources />} />
           </Routes>
         </div>
       </div>
