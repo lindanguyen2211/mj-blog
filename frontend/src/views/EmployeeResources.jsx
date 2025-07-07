@@ -6,7 +6,7 @@ const EmployeeResources = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   return (
-    <div>
+    <div className="employee-login">
       {isLoggedIn ? (
         <EmployeeDashboard onLogout={setIsLoggedIn} />
       ) : (
